@@ -1,0 +1,15 @@
+server:
+  port: 9527
+eureka:
+  instance:
+    hostname: localhost #eureka服务端的实例名称
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/        #设置与Eureka Server交互的地址查询服务和注册服务都需要依赖这个地址。
+  server:
+    enableSelfPreservation: false # 本地调试环境下关闭自我保护机制
+spring:
+freemarker:
+prefer-file-system-access: false
