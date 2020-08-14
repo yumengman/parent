@@ -1,0 +1,17 @@
+server:
+  port: 8084
+  servlet:
+    context-path: /user-service
+spring:
+  application:
+    name: user-service
+  profiles:
+    active: dev
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    healthcheck:
+      enabled: true

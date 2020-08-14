@@ -1,0 +1,17 @@
+server:
+  port: 8083
+  servlet:
+    context-path: /report-service
+spring:
+  application:
+    name: report-service
+  profiles:
+    active: dev
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    healthcheck:
+      enabled: true

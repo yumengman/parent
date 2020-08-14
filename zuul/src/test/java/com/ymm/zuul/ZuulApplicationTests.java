@@ -1,14 +1,13 @@
-package com.ymm.user;
+package com.ymm.zuul;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class UserApplicationTests {
+class ZuulApplicationTests {
 
   @Test
   void contextLoads() {
-
   }
 
 }

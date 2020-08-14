@@ -1,0 +1,17 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /order-service
+spring:
+  application:
+    name: order-service
+  profiles:
+    active: dev
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    healthcheck:
+      enabled: true

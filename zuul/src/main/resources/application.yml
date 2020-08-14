@@ -1,0 +1,34 @@
+server:
+  port: 9001
+spring:
+  profiles:
+    active: dev
+  application:
+    name: zuul
+# 配置在eureka中展示的地址
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    healthcheck:
+      enabled: true
+# 配置服务信息
+zuul:
+  routes:
+    goods:
+      url: http://localhost:8081/goods-service
+      path: /goods-service/**
+    order:
+      url: http://localhost:8082/order-service
+      path: /order-service/**
+    report:
+      url: http://localhost:8083/report-service
+      path: /report-service/**
+    user:
+      url: http://localhost:8084/user-service
+      path: /user-service/**
+  host:
+    socket-timeout-millis: 60000
+    connect-timeout-millis: 60000
+  retryable: true

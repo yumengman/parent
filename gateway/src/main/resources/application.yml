@@ -1,0 +1,62 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: gateway
+  profiles:
+    active:
+      - dev
+  security:
+    user:
+      name: admin
+      password: admin
+      roles:
+        - USER
+  cloud:
+    gateway:
+      routes:
+        - id: goods-service
+          # lb代表从注册中心获取服务，且已负载均衡方式转发
+          uri: http://localhost:8081/goods-service
+          filters:
+            - StripPrefix=1
+          predicates:
+            - Path=/goods-service/**
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    healthcheck:
+      enabled: true
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+zuul: # 设置网关超时时间/
+  host:
+    socket-timeout-millis: 60000
+    connect-timeout-millis: 60000
+  retryable: true
+
+ribbon:
+  MaxAutoRetries: 0 #最大重试次数，当Eureka中可以找到服务，但是服务连不上时将会重试
+  MaxAutoRetriesNextServer: 1 #切换实例的重试次数
+  OkToRetryOnAllOperations: true # 对所有的操作请求都进行重试，如果是get则可以，如果是post,put等操作没有实现幂等的情况下是很危险的
+  ConnectTimeout: 3000 #请求连接的超时时间
+  ReadTimeout: 3000 #请求处理的超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeout-in-milliseconds: 25000 #配置hystrix的超时时间，要大于(RibbonReadTimeout + RibbonConnectTimeout) * (MaxAutoRetries + 1) * (MaxAutoRetriesNextServer + 1)
