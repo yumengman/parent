@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ymm.goods.modules.goods.dao.PhInfoDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ymm.goods.modules.goods.entity.PhInfoEntity" id="BaseResultMap">
+        <result property="goodsId" column="goods_id"/>
+        <result property="phName" column="ph_name"/>
+        <result property="phWeight" column="ph_weight"/>
+        <result property="phCpu" column="ph_cpu"/>
+        <result property="phRam" column="ph_ram"/>
+        <result property="phRom" column="ph_rom"/>
+        <result property="phMicrosd" column="ph_microSD"/>
+        <result property="phCamera" column="ph_camera"/>
+        <result property="phCameraFront" column="ph_camera_front"/>
+        <result property="phCameraBack" column="ph_camera_back"/>
+        <result property="phScreen" column="ph_screen"/>
+        <result property="phResolution" column="ph_resolution"/>
+        <result property="phScreeType" column="ph_scree_type"/>
+        <result property="phShare" column="ph_share"/>
+        <result property="phBattery" column="ph_battery"/>
+        <result property="phCharger" column="ph_charger"/>
+        <result property="phSystem" column="ph_system"/>
+        <result property="commodityPic" column="commodity_pic"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+      goods_id,ph_name,ph_weight,ph_cpu,ph_ram,ph_rom,ph_microSD,ph_camera,ph_camera_front,ph_camera_back,ph_screen,ph_resolution,ph_scree_type,ph_share,ph_battery,ph_charger,ph_system,commodity_pic
+    </sql>
+
+</mapper>

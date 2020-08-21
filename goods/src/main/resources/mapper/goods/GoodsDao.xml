@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ymm.goods.modules.goods.dao.GoodsDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ymm.goods.modules.goods.entity.GoodsEntity" id="BaseResultMap">
+        <result property="goodsId" column="goods_id"/>
+        <result property="goodsName" column="goods__name"/>
+        <result property="shopName" column="shop_name"/>
+        <result property="goodsPrice" column="goods__price"/>
+        <result property="goodsUrl" column="goods__url"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+      goods_id,goods__name,shop_name,goods__price,goods__url,del_flag,create_time,update_time
+    </sql>
+
+</mapper>
