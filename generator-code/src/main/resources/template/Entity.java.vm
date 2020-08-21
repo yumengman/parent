@@ -3,7 +3,6 @@ package ${package}.${moduleName}.entity;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.huiyuantong.train.common.entity.BaseEntity;
 import lombok.Data;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -26,7 +25,7 @@ import java.util.Date;
 @Data
 @TableName("${tableName}")
 @ApiModel(value= "${package}.${moduleName}.entity.${className}Entity")
-public class ${className}Entity extends BaseEntity implements Serializable {
+public class ${className}Entity implements Serializable {
 	private static final long serialVersionUID = ${serialVersionUID};
 
 #foreach ($column in $columns)
