@@ -3,6 +3,9 @@ package com.ymm.user;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author yumen
+ */
 @SpringBootApplication
 public class UserApplication {
 

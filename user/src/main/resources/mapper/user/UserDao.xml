@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ymm.user.modules.user.dao.UserDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.ymm.user.modules.user.entity.UserEntity" id="BaseResultMap">
+        <result property="id" column="id"/>
+        <result property="userName" column="user_name"/>
+        <result property="mobile" column="mobile"/>
+        <result property="password" column="password"/>
+        <result property="openId" column="open_id"/>
+        <result property="aliId" column="ali_id"/>
+        <result property="integral" column="integral"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="createTime" column="create_time"/>
+        <result property="createUser" column="create_user"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateUser" column="update_user"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+      id,user_name,mobile,password,open_id,ali_id,integral,del_flag,create_time,create_user,update_time,update_user
+    </sql>
+
+</mapper>

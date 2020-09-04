@@ -1,0 +1,13 @@
+eureka:
+    client:
+        service-url:
+            defaultZone: http://localhost:9527/eureka/
+
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/spring-cloud-goods?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+        username: root
+        password: ymm123
+swagger:
+    enable: true

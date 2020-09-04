@@ -12,19 +12,19 @@
   <groupId>com.ymm</groupId>
   <artifactId>parent</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-  <name>parent</name>
-  <description>Demo project for Spring Boot</description>
+  <packaging>pom</packaging>
 
   <properties>
     <java.version>1.8</java.version>
     <spring-could-netflix.version>2.2.3.RELEASE</spring-could-netflix.version>
     <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
     <mysql.version>8.0.16</mysql.version>
-    <mssql.version>4.0</mssql.version>
-    <oracle.version>11.2.0.3</oracle.version>
+    <project.encoding>UTF-8</project.encoding>
+    <mybatisplus.version>3.3.1</mybatisplus.version>
   </properties>
 
   <modules>
+    <module>common</module>
     <module>eureka</module>
     <module>gateway</module>
     <module>generator-code</module>
@@ -85,17 +85,23 @@
       <artifactId>redisson-spring-boot-starter</artifactId>
       <version>3.11.0</version>
     </dependency>
-
-    <!--    接口文档    -->
-    <dependency>
-      <groupId>com.github.xiaoymin</groupId>
-      <artifactId>knife4j-spring-boot-starter</artifactId>
-      <version>2.0.2</version>
-    </dependency>
     <dependency>
       <groupId>com.baomidou</groupId>
-      <artifactId>mybatis-plus-extension</artifactId>
-      <version>3.3.2</version>
+      <artifactId>mybatis-plus-boot-starter</artifactId>
+      <version>${mybatisplus.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.baomidou</groupId>
+          <artifactId>mybatis-plus-generator</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+<!--    数据库加密信息 -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>1.1.17</version>
+      <scope>compile</scope>
     </dependency>
 
     <!-- mysql驱动 -->
@@ -104,22 +110,27 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>${mysql.version}</version>
     </dependency>
-    <!-- oracle驱动 -->
+<!--   接口文档 knife4j -->
     <dependency>
-      <groupId>com.oracle</groupId>
-      <artifactId>ojdbc6</artifactId>
-      <version>${oracle.version}</version>
+      <groupId>com.github.xiaoymin</groupId>
+      <artifactId>knife4j-spring-boot-starter</artifactId>
+      <version>2.0.2</version>
     </dependency>
-    <!-- sqlserver驱动 -->
+<!--    引入分页信息-->
     <dependency>
-      <groupId>com.microsoft.sqlserver</groupId>
-      <artifactId>sqljdbc4</artifactId>
-      <version>${mssql.version}</version>
-    </dependency>
-    <!-- postgresql驱动 -->
-    <dependency>
-      <groupId>org.postgresql</groupId>
-      <artifactId>postgresql</artifactId>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper-spring-boot-starter</artifactId>
+      <version>1.2.3</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.mybatis</groupId>
+          <artifactId>mybatis</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.mybatis</groupId>
+          <artifactId>mybatis-spring</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
   </dependencies>
@@ -139,8 +150,13 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+          <encoding>${project.encoding}</encoding>
+        </configuration>
       </plugin>
     </plugins>
   </build>
